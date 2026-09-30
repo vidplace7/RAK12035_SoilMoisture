@@ -53,7 +53,7 @@ void RAK12035::begin(bool wait)
 
 	delay(500);
 
-	time_t timeout = millis();
+	uint32_t timeout = millis();
 	uint8_t data;
 	while (!get_sensor_version(&data))
 	{
@@ -232,7 +232,7 @@ bool RAK12035::sensor_on(void)
 	digitalWrite(WB_IO4, HIGH);
 	// reset();
 
-	time_t timeout = millis();
+	uint32_t timeout = millis();
 	while (!get_sensor_version(&data))
 	{
 		if ((millis() - timeout) > 5000)
@@ -313,7 +313,7 @@ void RAK12035::reset(void)
 	delay(500);
 	digitalWrite(WB_IO4, HIGH);
 
-	time_t timeout = millis();
+	uint32_t timeout = millis();
 	uint8_t data;
 	while (!get_sensor_version(&data))
 	{
@@ -347,7 +347,7 @@ bool RAK12035::read_rak12035(uint8_t reg, uint8_t *data, uint8_t length)
 	delay(20);
 	i2cRequestFrom(_sensorAddress, length);
 	int i = 0;
-	time_t timeout = millis();
+	uint32_t timeout = millis();
 	while (_i2c_port->available()) // slave may send less than requested
 	{
 		data[i++] = i2cRead(); // receive a byte as a proper uint8_t

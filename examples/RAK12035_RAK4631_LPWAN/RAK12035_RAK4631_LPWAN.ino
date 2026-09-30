@@ -38,7 +38,7 @@ void setup_app(void)
 	// Initialize Serial for debug output
 	Serial.begin(115200);
 
-	time_t serial_timeout = millis();
+	uint32_t serial_timeout = millis();
 	// On nRF52840 the USB serial is not available immediately
 	while (!Serial)
 	{
